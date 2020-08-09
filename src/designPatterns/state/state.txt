@@ -1,0 +1,35 @@
+Stan:
+Zaimplementuj własny bankomat.
+
+Bankomat ma pewną ilość pieniędzy. Dla uproszczenia, nie będziemy dokładać jeszcze użytkownika, oraz stanu jego konta. 
+Zakładamy, że każdy może wypłacić z bankomatu dowolną ilość pieniędzy jeśli tylko bankomat ma dość zapasu gotówki. 
+
+Bankomat ma mieć 3 metody:
+insertCard()
+insertPin(int)
+takeCash(int)
+
+działanie metod jest całkowicie zależne od aktualnego stanu bankomatu.
+Bankomat ma mieć 4 możliwe stany:
+NoCard, NoPin, Ready oraz NoCash
+
+To oznacza, że działanie każdej z tych metod dla każdego z tych stanów może być inne.
+Większość kombinacji spowoduje błąd np. insertCard na bankomacie w stanie NoPin może
+zgłosić komunikat: "Nie można wstawić karty, karta już znajduje się w bankomacie!"
+
+Kombinacje stanu i metody wymagające szczególnego doprecyzowania:
+dla NoCard:
+insertCard() - jeśli jest minimum 100zł w bankomacie zmienia stan na no pin, w przeciwnym razie na no cash.
+
+dla NoPin:
+insertPin() - jeśli pin to 1234 to zmienia stan na ready, jeśli nie, komunikuje błąd pinu
+
+dla Ready:
+takeCash() - jeśli podano wartość powyżej stanu konta bankomatu zgłasza błąd w przeciwnym razie wypłaca pieniądze
+tzn. zmniejsza odpowiednio stan gotówki i oddaje kartę czyli przechodzi w stan no card
+
+
+nie implementuj koncepcji samej karty, sprawdzenie poprawności pinu zaimplementuj w najprostszy możliwy sposób.
+Wypłata pieniędzy ma wyłącznie zmnijeszać ilość pieniędzy w bankomacie, nic poza tym. W programie pomijamy koncepcje
+stanu pieniędzy na koncie.
+
